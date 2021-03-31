@@ -30,20 +30,16 @@ import edu.csc413.interpreter.expression.Condition;
 
 import java.util.List;
 
-public class IfStatement implements Statement {
-
-    private final Condition condition;
-    private final List<Statement> bodyStatements;
+public class IfStatement extends BlockStatement {
 
     public IfStatement(Condition condition, List<Statement> bodyStatements) {
-        this.condition = condition;
-        this.bodyStatements = bodyStatements;
+        super(condition, bodyStatements);
     }
 
     @Override
     public void run(ProgramState programState) {
-        if (condition.evaluate(programState)) {
-            for (Statement statement : bodyStatements) {
+        if (this.getCondition().evaluate(programState)) {
+            for (Statement statement : this.getBodyStatements()) {
                 statement.run(programState);
             }
         }

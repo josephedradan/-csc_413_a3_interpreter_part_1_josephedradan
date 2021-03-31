@@ -41,6 +41,7 @@ public class Parser {
     }
 
     public Condition createCondition(String operator, String lhsAsString, String rhsAsString) {
+
         Expression LhsExpression = parseExpression(lhsAsString);
         Expression rhsExpression = parseExpression(rhsAsString);
 
